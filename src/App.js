@@ -1,22 +1,23 @@
-import React, { Component } from 'react';
-import logo from './logo.svg';
-import './App.css';
-// import {createStore} from 'redux';
+import React,{Component} from 'react'
+import { connect } from 'react-redux'
+import {add,remove,addAsync} from './index.redux'
 
+
+@connect(
+  state=>({num:state}),
+  {add,remove,addAsync}
+)
 class App extends Component {
-  render() {
+  render(){
     return (
-      <div className="App">
-        <header className="App-header">
-          <img src={logo} className="App-logo" alt="logo" />
-          <h1 className="App-title">Welcome to Raae</h1>
-        </header>
-        <p className="App-intro">
-          To get started, edit <code>src/App.js</code> and save to reload.
-        </p>
+      <div>
+        <h1>现有{this.props.num}</h1>
+        <button onClick={this.props.add}>申请武器</button>
+        <button onClick={this.props.remove}>上交武器</button>
+        <button onClick={this.props.addAsync}>拖两天给</button>
       </div>
-    );
+    )
   }
 }
 
-export default App;
+export default App
