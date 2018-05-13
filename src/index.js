@@ -6,11 +6,14 @@ import {Provider} from 'react-redux'
 import {BrowserRouter, Route, Redirect, Switch} from 'react-router-dom'
 import Auth from './Auth'
 import Dashboard from './Dashboard'
-
+import './config'
+import 'antd-mobile/dist/antd-mobile.css'
 // import {counter} from './index.redux'
 import reducers from './reducer'
 // const reduxDevtools=window.devToolsExtension
-const store = createStore(reducers, compose(applyMiddleware(thunk), window.devToolsExtension
+const store = createStore(reducers, compose(
+  applyMiddleware(thunk), 
+  window.devToolsExtension
   ? window.devToolsExtension()
   : f => f))
 

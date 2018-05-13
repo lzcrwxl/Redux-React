@@ -13,16 +13,16 @@ const User = mongoose.model('user',new mongoose.Schema({
   age:{type:Number,require:true},
 }))
 
-// User.create({
-//   user:'wuxiaolong',
-//   age:10
-// },function(err,doc){
-//   if(!err){
-//     console.log(doc)
-//   }else{
-//     console.log(err)
-//   }
-// })
+User.create({
+  user:'wuxiaolong',
+  age:10
+},function(err,doc){
+  if(!err){
+    console.log(doc)
+  }else{
+    console.log(err)
+  }
+})
 // User.remove({age:18},function (err,doc) {
 //   console.log(doc)
 // })
@@ -38,7 +38,7 @@ app.get("/",function(req,res){
   )
 })
 app.get("/data",function(req,res){
-  User.findOne({'user':'xiaoming'},function (err,doc) {
+  User.findOne({},function (err,doc) {
     res.json(doc)
   })
 })
