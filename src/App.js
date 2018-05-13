@@ -4,7 +4,7 @@ import {add,remove,addAsync} from './index.redux'
 
 
 @connect(
-  state=>({num:state}),
+  state=>({num:state.counter}),
   {add,remove,addAsync}
 )
 class App extends Component {
