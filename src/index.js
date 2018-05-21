@@ -9,6 +9,7 @@ import 'antd-mobile/dist/antd-mobile.css'
 import reducers from './reducer'
 import Login from './container/login/login';
 import Register from './container/register/Register';
+import AuthRoute from './component/authroute/authroute';
 
 
 const store = createStore(reducers, compose(
@@ -20,6 +21,7 @@ ReactDom.render((
   <Provider store={store}>
     <BrowserRouter>
       <div>
+        <AuthRoute></AuthRoute>
         <Route path='/login' component={Login}></Route>
         <Route path='/register' component={Register}></Route>
       </div>

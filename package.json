@@ -96,7 +96,12 @@
       "react-app"
     ],
     "plugins": [
-      ["import", { "style": "css", "libraryName": "antd-mobile" }],
+      ["import", 
+        { 
+          "style": "css", 
+          "libraryName": "antd-mobile" 
+        }
+      ],
       "transform-decorators-legacy"
     ]
   },
