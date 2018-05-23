@@ -22,8 +22,12 @@ ReactDom.render((
     <BrowserRouter>
       <div>
         <AuthRoute></AuthRoute>
-        <Route path='/login' component={Login}></Route>
-        <Route path='/register' component={Register}></Route>
+        <Switch>
+          {/* <Route path='/bossinfo' component={BossInfo}></Route> */}
+          <Route path='/login' component={Login}></Route>
+          <Route path='/register' component={Register}></Route>
+        
+        </Switch>
       </div>
     </BrowserRouter>
   </Provider>

@@ -24,7 +24,7 @@ class AuthRoute extends React.Component{
     // 是否登陆
   }
   render(){
-    return <div>判断跳转</div>
+    return null
   }
 }
 
