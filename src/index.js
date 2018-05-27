@@ -10,6 +10,7 @@ import reducers from './reducer'
 import Login from './container/login/login';
 import Register from './container/register/Register';
 import AuthRoute from './component/authroute/authroute';
+import BossInfo from './container/bossinfo/bossinfo';
 import './index.css'
 
 const store = createStore(reducers, compose(
@@ -23,7 +24,7 @@ ReactDom.render((
       <div>
         <AuthRoute></AuthRoute>
         <Switch>
-          {/* <Route path='/bossinfo' component={BossInfo}></Route> */}
+          <Route path='/bossinfo' component={BossInfo}></Route>
           <Route path='/login' component={Login}></Route>
           <Route path='/register' component={Register}></Route>
         
