@@ -5,8 +5,19 @@ const model = require('./model')
 const User = model.getModel('user')
 
 Router.get('/list',function(req,res){
+  // User.remove({},function(e,d){})
   User.find({},(err,doc) => {
     return res.json(doc)
+  })
+})
+
+Router.post('/login',function(req,res){
+  const {user,pwd} = req.body
+  User.findOne({user,pwd:md5Pwd(pwd)},function(e,d){
+    if(!d){
+      return res.json({code:1,msg:'用户名或者密码错误'})
+    }
+    return res.json({code:0,data:d})
   })
 })
 Router.post('/register',function(req,res){

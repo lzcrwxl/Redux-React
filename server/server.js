@@ -15,5 +15,5 @@ app.use('/user',userRouter)
 
 
 app.listen(8888,function () {
-  console.log("hello")
+  console.log("listened on 8888")
 })
