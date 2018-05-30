@@ -5,6 +5,7 @@ import {getRedirectPath} from '../util'
 
 const REGISTER_SUCCESS = 'REGISTER_SUCCESS'
 const LOGIN_SUCCESS = 'LOGIN_SUCCESS'
+const LOAD_DATA='LOAD_DATA';
 const ERROR_MSG='ERROR_MSG'
 
 const initState={
@@ -12,7 +13,6 @@ const initState={
   msg:'',
   isAuth:false,
   user:'',
-  pwd:'',
   type:''
 }
 // reducer
@@ -24,6 +24,8 @@ export function user(state=initState,action){
       return {...state,isAuth:false,msg:action.msg}
     case LOGIN_SUCCESS:
       return {...state,msg:'',redirectTo:getRedirectPath(action.payload),isAuth:true,...action.payload}
+    case LOAD_DATA:
+      return {...state,...action.payload}
     default:
       return state
   }
@@ -41,6 +43,25 @@ function loginSuccess(data){
   return {type:LOGIN_SUCCESS,payload:data}
 }
 
+export function userInfo(){
+      // 获取用户信息
+  return dispatch=>{
+    axios.get('/user/info').then(res=>{
+      if(res.status==200){
+        if(res.data.code==0){
+          this.props.loadData(res.data.data)
+        }else{
+          
+          this.props.history.push('/login')
+        }
+      }
+    })
+  }
+}
+
+export function loadData(userinfo){
+  return {type:LOAD_DATA,payload:userinfo}
+}
 export function login({user,pwd}){
   if(!user||!pwd){
     return errorMSG('用户名密码必须输入')
