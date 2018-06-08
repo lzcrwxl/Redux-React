@@ -13,12 +13,12 @@ Router.get('/list',function(req,res){
 })
 
 Router.post('/update',function(req,res){
-  const userid=req.cookie.userid;
+  const userid=req.cookies.userid;
   if(!userid){
     return json.dumps({code:1})
   }
   const body=req.body;
-  User.findByIdAndUpdate(user,body,function(err,doc){
+  User.findByIdAndUpdate(userid,body,function(err,doc){
     const data=Object.assign({},{
       user:doc.user,
       type:doc.type
