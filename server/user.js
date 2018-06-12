@@ -9,14 +9,14 @@ Router.get('/list',function(req,res){
   const {type}=req.query
   // User.remove({},function(e,d){})
   User.find({type},(err,doc) => {
-    return res.json(doc)
+    return res.json({code:0,data:doc})
   })
 })
 
 Router.post('/update',function(req,res){
   const userid=req.cookies.userid;
   if(!userid){
-    return json.dumps({code:1})
+    return res.json.dumps({code:1})
   }
   const body=req.body;
   User.findByIdAndUpdate(userid,body,function(err,doc){
