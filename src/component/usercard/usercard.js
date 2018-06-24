@@ -27,8 +27,6 @@ class UserCard extends React.Component{
             {v.type=='boss'?<div>薪资：{v.money}</div>:null}
           </Body>
         </Card>):null
-
-
       ))}
     </WingBlank>
     )
