@@ -1,11 +1,21 @@
 import React from 'react'
 import { connect } from 'react-redux';
 import {Result,List,WhiteSpace} from 'antd-mobile'
+import browserCookie from 'browser-cookies'
+
 @connect(
   state=>state.user
 )
 
 class User extends React.Component{
+  constructor(props){
+    super(props)
+    this.logout=this.logout.bind(this)
+  }
+  logout(){
+    browserCookie.erase('userid')
+    console.log('logout')
+  }
   render(){
     const props=this.props
     console.log(this.props)
